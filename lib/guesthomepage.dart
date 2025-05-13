@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class guest_home_page extends StatefulWidget {
-  const guest_home_page({key});
+  const guest_home_page({Key? key}) : super(key: key);
 
   @override
   State<guest_home_page> createState() => _guest_home_pageState();
@@ -209,7 +209,14 @@ class _guest_home_pageState extends State<guest_home_page> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: PopupMenuButton(
-                  itemBuilder: (BuildContext context) {},
+                  itemBuilder: (BuildContext context) {
+                    return <PopupMenuEntry>[
+                      PopupMenuItem(
+                        value: 'menu1',
+                        child: Text('Menu Item 1'),
+                      ),
+                    ];
+                  },
                   child: Center(
                     child: Text(
                       "Flat tire",
@@ -224,7 +231,14 @@ class _guest_home_pageState extends State<guest_home_page> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: PopupMenuButton(
-                  itemBuilder: (BuildContext context) {},
+                  itemBuilder: (BuildContext context) {
+                    return <PopupMenuEntry>[
+                      PopupMenuItem(
+                        value: 'menu1',
+                        child: Text('Menu Item 1'),
+                      ),
+                    ];
+                  },
                   child: Center(
                     child: Text(
                       "Dash board symbols",
@@ -239,7 +253,14 @@ class _guest_home_pageState extends State<guest_home_page> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: PopupMenuButton(
-                  itemBuilder: (BuildContext context) {},
+                  itemBuilder: (BuildContext context) {
+                    return <PopupMenuEntry>[
+                      PopupMenuItem(
+                        value: 'menu1',
+                        child: Text('Menu Item 1'),
+                      ),
+                    ];
+                  },
                   child: Center(
                     child: Text(
                       "Oil change",
@@ -475,6 +496,20 @@ class _guest_home_pageState extends State<guest_home_page> {
           ),
         );
       }
+      // Default return for any other case
+      return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          title: Text(
+            "Guest homepage",
+            style: TextStyle(color: Color(0xFF464646)),
+          ),
+          centerTitle: true,
+        ),
+        body: Center(
+          child: Text('Unsupported screen size'),
+        ),
+      );
     });
   }
 }

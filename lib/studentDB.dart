@@ -4,14 +4,14 @@ import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class studentDB extends StatefulWidget {
-  const studentDB({Key key}) : super(key: key);
+  const studentDB({Key? key}) : super(key: key);
 
   @override
-  State<studentDB> createState() => _studentDB();
+  _studentDBState createState() => _studentDBState();
 }
 
-class _studentDB extends State<studentDB> {
-  int _boxLength;
+class _studentDBState extends State<studentDB> {
+  int _boxLength = 0;  // Initialize with default value
   TextEditingController namechange = TextEditingController();
   TextEditingController emailchange = TextEditingController();
 

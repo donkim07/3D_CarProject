@@ -4,14 +4,14 @@ import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class lecture extends StatefulWidget {
-  const lecture({Key key}) : super(key: key);
+  const lecture({Key? key}) : super(key: key);
 
   @override
-  State<lecture> createState() => _lectureState();
+  _lectureState createState() => _lectureState();
 }
 
 class _lectureState extends State<lecture> {
-  int _boxLength;
+  int _boxLength = 0;  // Initialize with default value
   TextEditingController namechange = TextEditingController();
   TextEditingController emailchange = TextEditingController();
 

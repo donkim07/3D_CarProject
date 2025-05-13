@@ -1,6 +1,6 @@
-# flutter_3d
+# 3D_CarProject
 
-A new Flutter project.
+A Flutter-based 3D Car Project.
 
 ## Getting Started
 

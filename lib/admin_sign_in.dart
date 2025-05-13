@@ -66,9 +66,10 @@ class admin_sign_inState extends State<admin_sign_in> {
                               border: OutlineInputBorder(),
                             ),
                             validator: (value) {
-                              if (value.isEmpty) {
-                                return 'Please enter username';
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter some text';
                               }
+                              return null;
                             }),
                       ),
                       Padding(
@@ -83,9 +84,10 @@ class admin_sign_inState extends State<admin_sign_in> {
                               border: OutlineInputBorder(),
                             ),
                             validator: (value) {
-                              if (value.isEmpty) {
-                                return 'Please enter your password';
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter some text';
                               }
+                              return null;
                             }),
                       ),
                     ]),
@@ -105,7 +107,7 @@ class admin_sign_inState extends State<admin_sign_in> {
                                         MaterialStateProperty.all<Color>(
                                             Color(0xFF464646))),
                                 onPressed: () {
-                                  if (_formKey.currentState.validate() &&
+                                  if (_formKey.currentState!.validate() &&
                                       password.text == "123" &&
                                       username.text == "group3") {
                                     showTopSnackBar(

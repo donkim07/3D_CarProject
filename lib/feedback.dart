@@ -6,14 +6,14 @@ import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class feedback1 extends StatefulWidget {
-  const feedback1({Key key}) : super(key: key);
+  const feedback1({Key? key}) : super(key: key);
 
   @override
-  State<feedback1> createState() => _feedback1();
+  _feedback1State createState() => _feedback1State();
 }
 
-class _feedback1 extends State<feedback1> {
-  int _boxLength;
+class _feedback1State extends State<feedback1> {
+  int _boxLength = 0;  // Initialize with default value
   int randomNumber = Random().nextInt(9000) + 1000;
 
   @override

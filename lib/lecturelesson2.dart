@@ -9,7 +9,7 @@ import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class lecturelesson2 extends StatefulWidget {
-  const lecturelesson2({Key key}) : super(key: key);
+  const lecturelesson2({Key? key}) : super(key: key);
 
   @override
   State<lecturelesson2> createState() => _lecturelesson2();
@@ -37,7 +37,14 @@ class _lecturelesson2 extends State<lecturelesson2> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: PopupMenuButton(
-              itemBuilder: (BuildContext context) {},
+              itemBuilder: (BuildContext context) {
+                return <PopupMenuEntry>[
+                  PopupMenuItem(
+                    value: 'menu1',
+                    child: Text('Menu Item 1'),
+                  ),
+                ];
+              },
               child: Center(
                 child: Text(
                   "Pistons",
@@ -56,6 +63,12 @@ class _lecturelesson2 extends State<lecturelesson2> {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return startup();
                 }));
+                return <PopupMenuEntry>[
+                  PopupMenuItem(
+                    value: 'menu1',
+                    child: Text('Menu Item 1'),
+                  ),
+                ];
               },
               child: Center(
                 child: Text(
@@ -71,7 +84,14 @@ class _lecturelesson2 extends State<lecturelesson2> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: PopupMenuButton(
-              itemBuilder: (BuildContext context) {},
+              itemBuilder: (BuildContext context) {
+                return <PopupMenuEntry>[
+                  PopupMenuItem(
+                    value: 'menu1',
+                    child: Text('Menu Item 1'),
+                  ),
+                ];
+              },
               child: Center(
                 child: Text(
                   "Spark plug",
@@ -351,9 +371,10 @@ class _lecturelesson2 extends State<lecturelesson2> {
                                       border: OutlineInputBorder(),
                                     ),
                                     validator: (value) {
-                                      if (value.isEmpty) {
-                                        return 'Please enter your password';
+                                      if (value == null || value.isEmpty) {
+                                        return 'This field cannot be empty';
                                       }
+                                      return null;
                                     }),
                               ),
                               Padding(

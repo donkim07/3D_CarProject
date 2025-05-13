@@ -68,9 +68,10 @@ class _sign_inState extends State<sign_in> {
                           border: OutlineInputBorder(),
                         ),
                         validator: (value) {
-                          if (value.isEmpty) {
-                            return 'Please enter username';
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter some text';
                           }
+                          return null;
                         }),
                   ),
                   Padding(
@@ -85,9 +86,10 @@ class _sign_inState extends State<sign_in> {
                           border: OutlineInputBorder(),
                         ),
                         validator: (value) {
-                          if (value.isEmpty) {
-                            return 'Please enter your password';
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter some text';
                           }
+                          return null;
                         }),
                   ),
                   Padding(
@@ -105,7 +107,7 @@ class _sign_inState extends State<sign_in> {
                                         MaterialStateProperty.all<Color>(
                                             Color(0xFF464646))),
                                 onPressed: () {
-                                  if (_formKey.currentState.validate()) {
+                                  if (_formKey.currentState?.validate() ?? false) {
                                     final enteredUsername = username2.text;
                                     final enteredPassword = password.text;
                                     final lectureBox = Hive.box("lecturer");

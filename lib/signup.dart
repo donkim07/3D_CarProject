@@ -9,7 +9,7 @@ import 'package:top_snackbar_flutter/top_snack_bar.dart';
 TextEditingController username = TextEditingController();
 
 class login extends StatefulWidget {
-  const login({Key key}) : super(key: key);
+  const login({Key? key}) : super(key: key);
 
   @override
   State<login> createState() => _loginState();
@@ -67,9 +67,10 @@ class _loginState extends State<login> {
                           border: OutlineInputBorder(),
                         ),
                         validator: (value) {
-                          if (value.isEmpty) {
-                            return 'Please enter username';
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter some text';
                           }
+                          return null;
                         }),
                   ),
                   Padding(
@@ -84,12 +85,12 @@ class _loginState extends State<login> {
                         border: OutlineInputBorder(),
                       ),
                       validator: (value) {
-                        if (value.isEmpty) {
-                          return 'Please enter your email address';
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your email';
                         }
                         if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
                             .hasMatch(value)) {
-                          return 'Please enter a valid email address';
+                          return 'Please enter a valid email';
                         }
                         return null; // Return null if the validation is successful
                       },
@@ -107,9 +108,10 @@ class _loginState extends State<login> {
                           border: OutlineInputBorder(),
                         ),
                         validator: (value) {
-                          if (value.isEmpty) {
-                            return 'Please enter your password';
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter some text';
                           }
+                          return null;
                         }),
                   ),
                   Padding(
@@ -128,7 +130,7 @@ class _loginState extends State<login> {
                                         MaterialStateProperty.all<Color>(
                                             Color(0xFF464646))),
                                 onPressed: () {
-                                  if (_formKey.currentState.validate()) {
+                                  if (_formKey.currentState?.validate() ?? false) {
                                     Hive.box("student").add(username.text);
                                     Hive.box("student-email").add(email.text);
                                     Hive.box("student-password")
@@ -163,22 +165,24 @@ class _loginState extends State<login> {
                                         MaterialStateProperty.all<Color>(
                                             Color(0xFF464646))),
                                 onPressed: () {
-                                  Hive.box("lecturer").add(username.text);
-                                  Hive.box("lecturer-email").add(email.text);
-                                  Hive.box("lecturer-password")
-                                      .add(password.text);
-                                  showTopSnackBar(
-                                    Overlay.of(context),
-                                    CustomSnackBar.success(
-                                      backgroundColor: Color(0xFF464646),
-                                      message:
-                                          "Signup successful now please login",
-                                    ),
-                                  );
-                                  Navigator.push(context,
-                                      MaterialPageRoute(builder: (context) {
-                                    return sign_in();
-                                  }));
+                                  if (_formKey.currentState?.validate() ?? false) {
+                                    Hive.box("lecturer").add(username.text);
+                                    Hive.box("lecturer-email").add(email.text);
+                                    Hive.box("lecturer-password")
+                                        .add(password.text);
+                                    showTopSnackBar(
+                                      Overlay.of(context),
+                                      CustomSnackBar.success(
+                                        backgroundColor: Color(0xFF464646),
+                                        message:
+                                            "Signup successful now please login",
+                                      ),
+                                    );
+                                    Navigator.push(context,
+                                        MaterialPageRoute(builder: (context) {
+                                      return sign_in();
+                                    }));
+                                  }
                                 },
                                 child: Text(
                                   "Continue as Lecturer",

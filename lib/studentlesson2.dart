@@ -7,7 +7,7 @@ import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class studentlesson2 extends StatefulWidget {
-  const studentlesson2({Key key}) : super(key: key);
+  const studentlesson2({Key? key}) : super(key: key);
 
   @override
   State<studentlesson2> createState() => _studentStatelesson2();
@@ -39,7 +39,14 @@ class _studentStatelesson2 extends State<studentlesson2> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: PopupMenuButton(
-              itemBuilder: (BuildContext context) {},
+              itemBuilder: (BuildContext context) {
+                return <PopupMenuEntry>[
+                  PopupMenuItem(
+                    value: 'menu1',
+                    child: Text('Menu Item 1'),
+                  ),
+                ];
+              },
               child: Center(
                 child: Text(
                   "Pistons",
@@ -54,7 +61,14 @@ class _studentStatelesson2 extends State<studentlesson2> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: PopupMenuButton(
-              itemBuilder: (BuildContext context) {},
+              itemBuilder: (BuildContext context) {
+                return <PopupMenuEntry>[
+                  PopupMenuItem(
+                    value: 'menu1',
+                    child: Text('Menu Item 1'),
+                  ),
+                ];
+              },
               child: Center(
                 child: Text(
                   "Engine",
@@ -69,7 +83,14 @@ class _studentStatelesson2 extends State<studentlesson2> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: PopupMenuButton(
-              itemBuilder: (BuildContext context) {},
+              itemBuilder: (BuildContext context) {
+                return <PopupMenuEntry>[
+                  PopupMenuItem(
+                    value: 'menu1',
+                    child: Text('Menu Item 1'),
+                  ),
+                ];
+              },
               child: Center(
                 child: Text(
                   "Spark plug",
@@ -86,13 +107,13 @@ class _studentStatelesson2 extends State<studentlesson2> {
             child: OutlinedButton(
               onPressed: () {},
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Color(0xFF464646)),
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                backgroundColor: WidgetStateProperty.all(Color(0xFF464646)),
+                shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                   RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(5),
                   ),
                 ),
-                side: MaterialStateProperty.all<BorderSide>(BorderSide.none),
+                side: WidgetStateProperty.all<BorderSide>(BorderSide.none),
               ),
               child: Text(
                 "Contact us",
@@ -330,9 +351,10 @@ class _studentStatelesson2 extends State<studentlesson2> {
                                       border: OutlineInputBorder(),
                                     ),
                                     validator: (value) {
-                                      if (value.isEmpty) {
-                                        return 'Please enter your password';
+                                      if (value == null || value.isEmpty) {
+                                        return 'This field cannot be empty';
                                       }
+                                      return null;
                                     }),
                               ),
                               Padding(

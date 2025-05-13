@@ -8,7 +8,7 @@ import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class student extends StatefulWidget {
-  const student(String username, int currentuser, {Key key}) : super(key: key);
+  const student(String username, int currentuser, {Key? key}) : super(key: key);
 
   @override
   State<student> createState() => _studentState();
@@ -49,7 +49,7 @@ class _studentState extends State<student> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: PopupMenuButton(
-              itemBuilder: (BuildContext context) {},
+              itemBuilder: (BuildContext context) => [],
               child: Center(
                 child: Text(
                   "Pisotns",
@@ -64,7 +64,13 @@ class _studentState extends State<student> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: PopupMenuButton(
-              itemBuilder: (BuildContext context) {
+              itemBuilder: (BuildContext context) => <PopupMenuEntry>[
+                PopupMenuItem(
+                  value: 'engine',
+                  child: Text('View Engine'),
+                ),
+              ],
+              onSelected: (value) {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return studentlesson2();
                 }));
@@ -83,7 +89,7 @@ class _studentState extends State<student> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: PopupMenuButton(
-              itemBuilder: (BuildContext context) {},
+              itemBuilder: (BuildContext context) => <PopupMenuEntry>[],
               child: Center(
                 child: Text(
                   "Spark plug",
@@ -419,9 +425,10 @@ class _studentState extends State<student> {
                                       border: OutlineInputBorder(),
                                     ),
                                     validator: (value) {
-                                      if (value.isEmpty) {
-                                        return 'Please enter your password';
+                                      if (value == null || value.isEmpty) {
+                                        return 'This field cannot be empty';
                                       }
+                                      return null;
                                     }),
                               ),
                               Padding(

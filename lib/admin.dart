@@ -6,7 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class admin extends StatefulWidget {
-  const admin({Key key}) : super(key: key);
+  const admin({Key? key}) : super(key: key);
 
   @override
   State<admin> createState() => _adminState();
@@ -34,7 +34,14 @@ class _adminState extends State<admin> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: PopupMenuButton(
-              itemBuilder: (BuildContext context) {},
+              itemBuilder: (BuildContext context) {
+                return <PopupMenuEntry>[
+                  PopupMenuItem(
+                    child: Text('Settings'),
+                    value: 'settings',
+                  ),
+                ];
+              },
               child: Center(
                 child: Text(
                   "Car Library",
@@ -49,7 +56,14 @@ class _adminState extends State<admin> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: PopupMenuButton(
-              itemBuilder: (BuildContext context) {},
+              itemBuilder: (BuildContext context) {
+                return <PopupMenuEntry>[
+                  PopupMenuItem(
+                    child: Text('Settings'),
+                    value: 'settings',
+                  ),
+                ];
+              },
               child: Center(
                 child: Text(
                   "About us",
@@ -106,7 +120,14 @@ class _adminState extends State<admin> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: PopupMenuButton(
-              itemBuilder: (BuildContext context) {},
+              itemBuilder: (BuildContext context) {
+                return <PopupMenuEntry>[
+                  PopupMenuItem(
+                    child: Text('Settings'),
+                    value: 'settings',
+                  ),
+                ];
+              },
               child: Center(
                 child: Text(
                   "Feedback",
